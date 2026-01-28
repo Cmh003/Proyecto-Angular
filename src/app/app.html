@@ -2,8 +2,18 @@
   <h1>{{ title }}</h1>
 
   <div class="input-section">
-    <input type="text" [(ngModel)]="newTodoText" (keyup.enter)="addTodo()" placeholder="Nueva tarea...">
-    <button (click)="addTodo()">Añadir</button>
+    <input 
+      type="text" 
+      [(ngModel)]="newTodoText" 
+      (keyup.enter)="addTodo()"
+      [class.error]="newTodoText.length > 100"
+      placeholder="Nueva tarea...">
+    <button (click)="addTodo()" [disabled]="newTodoText.trim() === ''">Añadir</button>
+  </div>
+  
+  <div class="input-info">
+    <small>{{ newTodoText.length }} / 100</small>
+    <span *ngIf="newTodoText.length > 100" class="error-msg">Máximo 100 caracteres</span>
   </div>
 
   <div class="filters">
@@ -12,7 +22,11 @@
     <button [class.active]="currentFilter === 'completed'" (click)="currentFilter = 'completed'">Completadas</button>
   </div>
 
-  <ul class="todo-list">
+  <div *ngIf="todos.length === 0" class="empty-state">
+    No hay tareas. ¡Añade una para empezar!
+  </div>
+
+  <ul *ngIf="todos.length > 0" class="todo-list">
     <app-todo-item 
       *ngFor="let t of getFilteredTodos()" 
       [todo]="t" 

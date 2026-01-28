@@ -11,10 +11,10 @@ interface Todo {
 
 @Component({
   selector: 'app-root',
-  standalone: true, 
-  imports: [CommonModule, FormsModule, TodoItemComponent], 
-  templateUrl: './app.html', 
-  styleUrl: './app.css'      
+  standalone: true,
+  imports: [CommonModule, FormsModule, TodoItemComponent],
+  templateUrl: './app.html',
+  styleUrl: './app.css'
 })
 export class AppComponent {
   title = 'TODO List Angular';
