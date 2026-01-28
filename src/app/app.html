@@ -7,7 +7,9 @@
       [(ngModel)]="newTodoText" 
       (keyup.enter)="addTodo()"
       [class.error]="newTodoText.length > 100"
-      placeholder="Nueva tarea...">
+      placeholder="Nueva tarea..."
+      maxlength=100>
+      
     <button (click)="addTodo()" [disabled]="newTodoText.trim() === ''">Añadir</button>
   </div>
   
