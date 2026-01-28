@@ -1,0 +1,9 @@
+<li [class.completed]="todo.completed" class="todo-item">
+  <input 
+    type="checkbox" 
+    [checked]="todo.completed" 
+    (change)="onToggle()" 
+    class="todo-checkbox">
+  <span class="todo-text">{{ todo.text }}</span>
+  <button (click)="onDelete()" class="delete-btn">Eliminar</button>
+</li>
